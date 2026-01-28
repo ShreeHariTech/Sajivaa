@@ -122,38 +122,37 @@
   display: flex;
   align-items: center;
 }
+
+.hero::before {
+  content: none;
+}
+
+
+
 @media (max-width: 991px) {
   .hero {
-    min-height: 100vh;
-    background-position: center top;
-  }
-  /* Overlay */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(11,15,14,0.45),
-    rgba(11,15,14,0.85)
-  );
-  
-
+    position: relative;
   }
 
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 3.1rem;
-    color: #EDEDED;
-    letter-spacing: 0.5px;
+  .hero::before {
+    content: "";
+    position: fixed;   /* mobile ma overlay fix rahe */
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(11,15,14,0.45),
+      rgba(11,15,14,0.85)
+    );
+    z-index: 1;
+    pointer-events: none;
   }
 
-  .hero p {
-    color: #B7C1BC;
-    max-width: 520px;
-    font-size: 1.05rem;
+  .hero > * {
+    position: relative;
+    z-index: 2;
   }
 }
+
 
 .hero > * {
   position: relative;
